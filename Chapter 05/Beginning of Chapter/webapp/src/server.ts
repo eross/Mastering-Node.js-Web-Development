@@ -2,6 +2,7 @@ import { createServer } from "http";
 import { handler, redirectionHandler } from "./handler";
 import { createServer as createHttpsServer } from "https";
 import { readFileSync } from "fs";
+import express, {Express} from "express";
 
 const port = 3000;
 const https_port = 3443;

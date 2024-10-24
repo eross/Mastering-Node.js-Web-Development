@@ -5,8 +5,8 @@ import { createServer as createHttpsServer } from "https";
 import { readFileSync } from "fs";
 import express, { Express } from "express";
 
-const port = 5000;
-const https_port = 5500;
+const port = 3000;
+const https_port = 3443;
 
 const server = createServer(redirectionHandler);
 
