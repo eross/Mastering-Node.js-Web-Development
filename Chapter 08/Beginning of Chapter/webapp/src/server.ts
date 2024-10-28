@@ -5,12 +5,12 @@ import cors from "cors";
 import httpProxy from "http-proxy";
 import helmet from "helmet";
 
-const port = 5000;
+const port = 3000;
 
 const expressApp: Express = express();
 
 const proxy = httpProxy.createProxyServer({
-    target: "http://localhost:5100", ws: true
+    target: "http://localhost:3443", ws: true
 });
 
 // expressApp.use((req, resp, next) => {
@@ -24,14 +24,14 @@ expressApp.use(helmet({
             imgSrc: "'self'",
             scriptSrcAttr: "'none'",
             scriptSrc: "'self'",
-            connectSrc: "'self' ws://localhost:5000",
+            connectSrc: "'self' ws://localhost:3000",
         },
         reportOnly: true
     }
 }));
 
 expressApp.use(cors({
-    origin: "http://localhost:5100"
+    origin: "http://localhost:3443"
 }));
 expressApp.use(express.json());
 

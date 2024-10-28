@@ -9,10 +9,10 @@ const readHandler_1 = require("./readHandler");
 const cors_1 = __importDefault(require("cors"));
 const http_proxy_1 = __importDefault(require("http-proxy"));
 const helmet_1 = __importDefault(require("helmet"));
-const port = 5000;
+const port = 3000;
 const expressApp = (0, express_1.default)();
 const proxy = http_proxy_1.default.createProxyServer({
-    target: "http://localhost:5100", ws: true
+    target: "http://localhost:3443", ws: true
 });
 // expressApp.use((req, resp, next) => {
 //     resp.setHeader("Content-Security-Policy", "img-src 'self'; connect-src 'self'");
@@ -24,13 +24,13 @@ expressApp.use((0, helmet_1.default)({
             imgSrc: "'self'",
             scriptSrcAttr: "'none'",
             scriptSrc: "'self'",
-            connectSrc: "'self' ws://localhost:5000",
+            connectSrc: "'self' ws://localhost:3000",
         },
         reportOnly: true
     }
 }));
 expressApp.use((0, cors_1.default)({
-    origin: "http://localhost:5100"
+    origin: "http://localhost:3443"
 }));
 expressApp.use(express_1.default.json());
 expressApp.post("/read", readHandler_1.readHandler);
